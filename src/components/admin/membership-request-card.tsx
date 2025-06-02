@@ -23,7 +23,7 @@ export default function MembershipRequestCard({ request, onApprove, onReject }: 
 
   return (
     <Card className="shadow-sm hover:shadow-md transition-shadow">
-      <CardHeader className="p-4 flex flex-row items-center space-x-3 space-x-reverse">
+      <CardHeader className="p-3 flex flex-row items-center space-x-3 space-x-reverse">
         <Avatar className="h-10 w-10">
           <AvatarImage src={request.repAvatarUrl || `https://placehold.co/40x40.png?text=${request.repName.substring(0,1)}`} alt={request.repName} data-ai-hint="profile person medical" />
           <AvatarFallback>{request.repName.substring(0, 2).toUpperCase()}</AvatarFallback>
@@ -34,7 +34,7 @@ export default function MembershipRequestCard({ request, onApprove, onReject }: 
           <p className="text-xs text-muted-foreground">تاريخ التقديم: {formattedDate}</p>
         </div>
       </CardHeader>
-      <CardContent className="p-4 border-t">
+      <CardContent className="p-3 border-t">
         <Dialog>
           <DialogTrigger asChild>
             <Button variant="outline" size="sm" className="w-full text-primary border-primary hover:bg-primary/10">
@@ -59,7 +59,7 @@ export default function MembershipRequestCard({ request, onApprove, onReject }: 
           </DialogContent>
         </Dialog>
       </CardContent>
-      <CardFooter className="p-4 flex justify-end space-x-2 space-x-reverse">
+      <CardFooter className="p-3 flex justify-end space-x-2 space-x-reverse">
         <Button variant="destructive" size="sm" onClick={() => onReject(request.id)}>
           <XCircle size={16} className="ml-2" /> رفض
         </Button>

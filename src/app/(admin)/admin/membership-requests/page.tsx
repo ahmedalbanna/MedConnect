@@ -1,7 +1,6 @@
 "use client";
 
 import MembershipRequestCard from '@/components/admin/membership-request-card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from 'react';
 
 const mockMembershipRequests = [
@@ -62,7 +61,7 @@ export default function MembershipRequestsPage() {
         </TabsList>
         <TabsContent value="pending"> */}
           {requests.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {requests.map(request => (
                 <MembershipRequestCard 
                   key={request.id} 

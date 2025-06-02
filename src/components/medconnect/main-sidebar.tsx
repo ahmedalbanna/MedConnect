@@ -24,7 +24,7 @@ const medicalRepNavItems = [
   { href: '/my-posts', label: 'منشوراتي', icon: FileText, roles: ['medical_rep'] },
 ];
 
-const pharmacyNavItems = [
+const pharmacyNavItems: never[] = [
   // يمكن إضافة روابط خاصة بالصيدليات هنا
 ];
 

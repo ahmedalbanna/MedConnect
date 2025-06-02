@@ -1,6 +1,8 @@
 import AuthForm from '@/components/medconnect/auth-form';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Shield } from 'lucide-react';
 
 export default function AuthPage() {
   return (
@@ -16,6 +18,12 @@ export default function AuthPage() {
         />
       </Link>
       <AuthForm />
+      <Button asChild variant="outline" className="mt-6">
+        <Link href="/admin/dashboard">
+          <Shield className="ml-2 h-4 w-4" />
+          لوحة تحكم المسؤول
+        </Link>
+      </Button>
        <p className="mt-8 text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} MedConnect. جميع الحقوق محفوظة.
         </p>

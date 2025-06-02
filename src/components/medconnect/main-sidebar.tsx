@@ -74,7 +74,7 @@ export default function MainSidebar() {
         <h1 className="text-2xl font-headline text-primary">MedConnect</h1>
       </div>
       
-      <nav className="flex-grow space-y-2">
+      <nav className="flex-grow space-y-2 overflow-y-auto min-h-0">
         <h2 className="text-xs font-semibold text-muted-foreground px-2 uppercase tracking-wider">القائمة الرئيسية</h2>
         {availableNavItems.map((item) => {
           const isActive = pathname === item.href || (item.href !== '/home' && pathname.startsWith(item.href));

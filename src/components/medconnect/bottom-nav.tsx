@@ -7,8 +7,8 @@ import { Home, MessageSquare, CalendarDays, User, Bell, PlusSquare } from 'lucid
 import { cn } from '@/lib/utils';
 
 // في تطبيق حقيقي، سيتم تحديد هذا الدور بناءً على بيانات المستخدم المسجل دخوله.
-// لأغراض العرض، تم تعيينه إلى 'medical_rep'.
-const currentUserRole: 'pharmacy' | 'medical_rep' = 'medical_rep';
+// لأغراض العرض، تم تعيينه إلى 'pharmacy'.
+const currentUserRole: 'pharmacy' | 'medical_rep' = 'pharmacy';
 
 const baseNavItems = [
   { href: '/home', label: 'الرئيسية', icon: Home, roles: ['pharmacy', 'medical_rep'] },

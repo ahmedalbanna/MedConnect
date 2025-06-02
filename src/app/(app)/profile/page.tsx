@@ -14,21 +14,21 @@ import { useRouter } from 'next/navigation';
 
 // Mock user data - this would come from auth/database
 const mockUser = {
-  role: 'medical_rep' as 'pharmacy' | 'medical_rep', // Changed to 'medical_rep' for demonstration
-  displayName: 'أحمد خليل (مندوب)', // Changed for rep
-  email: 'ahmed.khalil@rep.com', // Changed for rep
-  photoUrl: 'https://placehold.co/128x128.png?text=AK', // Changed for rep
-  phoneNumber: '0559876543', // Changed for rep
-  region: 'جدة', // Changed for rep
-  // Pharmacy specific (will be ignored for rep)
-  pharmacyName: '', 
-  address: '',
-  // Rep specific
-  companyName: 'شركة الدواء المبتكر',
-  specialty: 'الأمراض الجلدية',
-  bio: 'مندوب طبي متخصص في أدوية الجلدية والعناية بالبشرة، خبرة 3 سنوات في تغطية منطقة جدة.',
-  isApproved: true,
-  licenseNumber: 'MR-67890', // Added license for rep
+  role: 'pharmacy' as 'pharmacy' | 'medical_rep', 
+  displayName: 'صيدلية الأمل', 
+  email: 'alamal@pharmacy.com', 
+  photoUrl: 'https://placehold.co/128x128.png?text=PA',
+  phoneNumber: '0112345678', 
+  region: 'الرياض', 
+  // Pharmacy specific
+  pharmacyName: 'صيدلية الأمل', 
+  address: 'شارع الملك فهد، الرياض',
+  licenseNumber: 'PH-12345',
+  // Rep specific (will be ignored for pharmacy)
+  companyName: '',
+  specialty: '',
+  bio: '',
+  isApproved: true, // Not directly applicable to pharmacy in this mock structure, but keeping for consistency
 };
 
 
@@ -50,14 +50,14 @@ export default function ProfilePage() {
       <Card className="shadow-xl overflow-hidden">
         <CardHeader className="bg-muted/30 p-6 flex flex-col items-center text-center space-y-4">
           <Avatar className="h-32 w-32 border-4 border-background shadow-lg">
-            <AvatarImage src={user.photoUrl} alt={user.displayName} data-ai-hint="profile medical representative" />
+            <AvatarImage src={user.photoUrl} alt={user.displayName} data-ai-hint="profile pharmacy" />
             <AvatarFallback className="text-4xl">{user.displayName.substring(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
           <div>
             <CardTitle className="text-2xl font-semibold">{user.displayName}</CardTitle>
             <CardDescription className="text-md">
               {user.role === 'pharmacy' ? 'صيدلية' : 'مندوب طبي'}
-              {user.role === 'medical_rep' && (
+              {user.role === 'medical_rep' && ( // This block will be hidden for pharmacy role
                 <Badge variant={user.isApproved ? "default" : "destructive"} className="mr-2 text-xs">
                   {user.isApproved ? <CheckCircle className="ml-1 h-3 w-3" /> : <Clock className="ml-1 h-3 w-3" />}
                   {user.isApproved ? 'معتمد' : 'في انتظار الموافقة'}
@@ -117,7 +117,7 @@ export default function ProfilePage() {
             </div>
           )}
 
-          {user.role === 'medical_rep' && (
+          {user.role === 'medical_rep' && ( // This block will be hidden for pharmacy role
              <div>
               <h3 className="text-lg font-semibold mb-3 text-primary">معلومات المندوب</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">

@@ -76,8 +76,8 @@ const mockPharmacyPosts = [
 
 export default function HomePage() {
   // في تطبيق حقيقي، سيتم تحديد هذا الدور بناءً على بيانات المستخدم المسجل دخوله.
-  // لأغراض العرض، تم تعيينه إلى 'medical_rep'.
-  const userRole: 'pharmacy' | 'medical_rep' = 'medical_rep'; 
+  // لأغراض العرض، تم تعيينه إلى 'pharmacy'.
+  const userRole: 'pharmacy' | 'medical_rep' = 'pharmacy'; 
 
   return (
     <div className="container mx-auto p-4 sm:p-6 lg:p-8">

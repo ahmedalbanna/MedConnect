@@ -43,7 +43,7 @@ export default function AdminDashboardPage() {
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={regionData} layout="vertical" margin={{ right: 30 }}>
                 <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                <XAxis type="number" 환경="rtl" />
+                <XAxis type="number" />
                 <YAxis dataKey="name" type="category" width={80} tickLine={false} axisLine={false} />
                 <Tooltip
                   cursor={{ fill: 'hsl(var(--muted))' }}

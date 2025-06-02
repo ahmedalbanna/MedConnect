@@ -1,10 +1,11 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Paperclip, Mic, Send, Search, UserCircle } from 'lucide-react';
+import { Paperclip, Mic, Send, Search, UserCircle, MessageSquare } from 'lucide-react'; // Added MessageSquare
 import { cn } from '@/lib/utils';
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "@/components/ui/command";
 import { ScrollArea } from '@/components/ui/scroll-area';

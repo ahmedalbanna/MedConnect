@@ -6,6 +6,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlusCircle, ListFilter } from 'lucide-react';
 import React, { useState } from 'react';
+import { arEG } from 'date-fns/locale'; // Import the Arabic locale
 
 const mockAppointments = [
   {
@@ -68,7 +69,7 @@ export default function CalendarPage() {
               onSelect={setSelectedDate}
               className="rounded-md w-full"
               dir="rtl"
-              locale={{ code: 'ar-EG' } as any} // For Arabic day/month names
+              locale={arEG} // Use the imported arEG locale
             />
           </CardContent>
         </Card>

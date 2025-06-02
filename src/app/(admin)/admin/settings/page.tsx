@@ -1,9 +1,10 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
-import { SlidersHorizontal, Mail, ShieldLock } from 'lucide-react';
+import { SlidersHorizontal, Mail, Shield } from 'lucide-react'; // Changed ShieldLock to Shield
 
 export default function AdminSettingsPage() {
   return (
@@ -46,7 +47,7 @@ export default function AdminSettingsPage() {
 
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center text-xl"><ShieldLock className="ml-3 text-primary"/> إعدادات الأمان</CardTitle>
+          <CardTitle className="flex items-center text-xl"><Shield className="ml-3 text-primary"/> إعدادات الأمان</CardTitle> {/* Changed ShieldLock to Shield */}
           <CardDescription>إدارة سياسات الأمان والوصول.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

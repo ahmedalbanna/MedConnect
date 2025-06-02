@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, use } from 'react'; // Imported 'use'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -25,19 +26,25 @@ const mockMessages: Message[] = [
 ];
 
 // params.id would come from the URL
-export default function ChatPage({ params }: { params: { id: string } }) {
+// Changed params type to Promise<{ id: string }> and renamed to paramsPromise
+export default function ChatPage({ params: paramsPromise }: { params: Promise<{ id: string }> }) {
+  const params = use(paramsPromise); // Unwrap the promise using React.use()
+
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  // Mock fetching messages for this chat ID
+  // Now use the resolved `params`
   const otherPartyName = params.id === 'chat1' ? 'صيدلية الشفاء' : 'مندوب شركة الأمل الطبية';
   const otherPartyAvatar = params.id === 'chat1' ? 'https://placehold.co/40x40.png?text=S' : 'https://placehold.co/40x40.png?text=A';
 
 
   useEffect(() => {
-    setMessages(mockMessages);
-  }, [params.id]);
+    // Ensure params is resolved before using params.id
+    if (params?.id) {
+      setMessages(mockMessages);
+    }
+  }, [params?.id]); // Use resolved params.id
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -66,7 +73,7 @@ export default function ChatPage({ params }: { params: { id: string } }) {
         </Link>
         <Avatar className="h-10 w-10 ml-3">
           <AvatarImage src={otherPartyAvatar} alt={otherPartyName} data-ai-hint="profile person" />
-          <AvatarFallback>{otherPartyName.substring(0, 2).toUpperCase()}</AvatarFallback>
+          <AvatarFallback>{otherPartyName ? otherPartyName.substring(0, 2).toUpperCase() : ''}</AvatarFallback>
         </Avatar>
         <h2 className="text-lg font-semibold">{otherPartyName}</h2>
       </header>
@@ -83,7 +90,7 @@ export default function ChatPage({ params }: { params: { id: string } }) {
             {msg.sender === 'other' && (
               <Avatar className="h-8 w-8 ml-2 self-start shrink-0">
                 <AvatarImage src={msg.avatarUrl} alt="Sender" data-ai-hint="profile person"/>
-                <AvatarFallback>{otherPartyName.substring(0,1)}</AvatarFallback>
+                <AvatarFallback>{otherPartyName ? otherPartyName.substring(0,1) : ''}</AvatarFallback>
               </Avatar>
             )}
             <div

@@ -1,16 +1,17 @@
 
+"use client"; // Add "use client" for context usage
+
 import PostCard from '@/components/medconnect/post-card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search, Filter, PlusCircle } from 'lucide-react';
 import Link from 'next/link';
+import { useRole } from '@/contexts/role-context'; // Import useRole
 
-// بيانات وهمية لمنشورات الصيدليات (ما يراه المندوب)
-// أو يمكن أن تكون هذه قائمة بمنشورات المندوب نفسه
 const mockRepPosts = [
   {
     id: '1',
-    repName: 'أحمد محمود', // اسم المندوب
+    repName: 'أحمد محمود', 
     repAvatarUrl: 'https://placehold.co/40x40.png?text=AM',
     companyName: 'شركة الأدوية الحديثة',
     createdAt: new Date().toISOString(),
@@ -19,14 +20,14 @@ const mockRepPosts = [
     imageUrl: 'https://placehold.co/600x400.png',
     likesCount: 120,
     commentsCount: 15,
-    views: 1578, // مثال لعدد المشاهدات
+    views: 1578, 
   },
   {
     id: '2',
     repName: 'أحمد محمود',
     repAvatarUrl: 'https://placehold.co/40x40.png?text=AM',
     companyName: 'شركة الأدوية الحديثة',
-    createdAt: new Date(Date.now() - 86400000).toISOString(), // Yesterday
+    createdAt: new Date(Date.now() - 86400000).toISOString(), 
     title: 'تذكير بالندوة التعريفية حول دواء Y',
     content: 'لا تنسوا ندوتنا التعريفية غداً...',
     likesCount: 90,
@@ -37,37 +38,40 @@ const mockRepPosts = [
 
 const mockPharmacyPosts = [
   {
-    id: '1',
+    id: 'pharma-post-1', // Ensure unique IDs
     repName: 'أحمد محمود',
     repAvatarUrl: 'https://placehold.co/40x40.png?text=AM',
     companyName: 'شركة الأدوية الحديثة',
     createdAt: new Date().toISOString(),
     title: 'إطلاق منتج جديد: دواء X لعلاج ارتفاع ضغط الدم',
     content: 'يسرنا الإعلان عن إطلاق دواء X، وهو علاج مبتكر وفعال لمرضى ارتفاع ضغط الدم. يتميز بآثاره الجانبية المنخفضة وفعاليته العالية. متوفر الآن في جميع الصيدليات المعتمدة. للمزيد من المعلومات، يرجى التواصل معنا.',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://placehold.co/600x400.png?text=ProductX',
+    dataAiHint: "drug hypertension",
     likesCount: 120,
     commentsCount: 15,
   },
   {
-    id: '2',
+    id: 'pharma-post-2',
     repName: 'فاطمة علي',
     repAvatarUrl: 'https://placehold.co/40x40.png?text=FA',
     companyName: ' فارماكو العالمية',
-    createdAt: new Date(Date.now() - 86400000).toISOString(), // Yesterday
+    createdAt: new Date(Date.now() - 86400000).toISOString(), 
     title: 'عرض خاص على فيتامينات الأطفال هذا الشهر',
     content: 'استفيدوا من عرضنا الخاص على مجموعة فيتامينات الأطفال المتكاملة. خصم 20% طوال شهر يوليو. تركيبة معززة لدعم نمو وصحة أطفالكم. لا تفوتوا الفرصة!',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://placehold.co/600x400.png?text=Vitamins',
+    dataAiHint: "vitamins kids",
     likesCount: 250,
     commentsCount: 30,
   },
    {
-    id: '3',
+    id: 'pharma-post-3',
     repName: 'خالد إبراهيم',
     repAvatarUrl: 'https://placehold.co/40x40.png?text=KI',
     companyName: 'مستلزمات طبية برو',
-    createdAt: new Date(Date.now() - 172800000).toISOString(), // Two days ago
+    createdAt: new Date(Date.now() - 172800000).toISOString(), 
     title: 'ندوة تعريفية حول أحدث أجهزة قياس السكر',
     content: 'ندعوكم لحضور ندوة تعريفية حول أحدث أجهزة قياس السكر المنزلية. تتميز بالدقة وسهولة الاستخدام. ستعقد الندوة يوم الخميس القادم الساعة 5 مساءً عبر الإنترنت. رابط التسجيل في البايو.',
+    // No image for this post
     likesCount: 95,
     commentsCount: 8,
   },
@@ -75,18 +79,16 @@ const mockPharmacyPosts = [
 
 
 export default function HomePage() {
-  // في تطبيق حقيقي، سيتم تحديد هذا الدور بناءً على بيانات المستخدم المسجل دخوله.
-  // لأغراض العرض، تم تعيينه إلى 'pharmacy'.
-  const userRole: 'pharmacy' | 'medical_rep' = 'pharmacy'; 
+  const { currentUserRole } = useRole(); // Get role from context
 
   return (
     <div className="container mx-auto p-4 sm:p-6 lg:p-8">
       <header className="mb-6">
         <h1 className="text-3xl font-headline text-primary">
-          {userRole === 'pharmacy' ? 'آخر المستجدات' : 'لوحة تحكم المندوب'}
+          {currentUserRole === 'pharmacy' ? 'آخر المستجدات' : 'لوحة تحكم المندوب'}
         </h1>
         <p className="text-muted-foreground">
-          {userRole === 'pharmacy' 
+          {currentUserRole === 'pharmacy' 
             ? 'اكتشف آخر المنشورات والعروض من مندوبي الأدوية.'
             : 'نظرة عامة على منشوراتك وأدائك.'
           }
@@ -102,7 +104,7 @@ export default function HomePage() {
           <Filter className="ml-2 h-4 w-4" />
           تصفية
         </Button>
-        {userRole === 'medical_rep' && (
+        {currentUserRole === 'medical_rep' && (
           <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
             <Link href="/create-post">
               <PlusCircle className="ml-2 h-5 w-5" />
@@ -112,7 +114,7 @@ export default function HomePage() {
         )}
       </div>
 
-      {userRole === 'pharmacy' && (
+      {currentUserRole === 'pharmacy' && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {mockPharmacyPosts.map((post) => (
             <PostCard key={post.id} post={post} />
@@ -120,7 +122,7 @@ export default function HomePage() {
         </div>
       )}
 
-      {userRole === 'medical_rep' && (
+      {currentUserRole === 'medical_rep' && (
         <div>
           <div className="mb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="p-4 bg-card rounded-lg shadow">
@@ -151,5 +153,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    

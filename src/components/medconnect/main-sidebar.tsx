@@ -3,16 +3,15 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, MessageSquare, CalendarDays, User, Settings, Bell, LogOut, ShieldCheck, ChevronRight, PlusSquare, FileText } from 'lucide-react';
+import { Home, MessageSquare, CalendarDays, User, Settings, Bell, LogOut, ShieldCheck, ChevronRight, PlusSquare, FileText, Repeat } from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useRouter } from 'next/navigation';
-
-// في تطبيق حقيقي، سيتم تحديد هذا الدور بناءً على بيانات المستخدم المسجل دخوله.
-// لأغراض العرض، تم تعيينه إلى 'pharmacy'.
-const currentUserRole: 'pharmacy' | 'medical_rep' = 'pharmacy';
+import { useRole } from '@/contexts/role-context';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 
 const baseNavItems = [
   { href: '/home', label: 'الرئيسية', icon: Home, roles: ['pharmacy', 'medical_rep'] },
@@ -22,12 +21,11 @@ const baseNavItems = [
 
 const medicalRepNavItems = [
   { href: '/create-post', label: 'إنشاء منشور', icon: PlusSquare, roles: ['medical_rep'] },
-  { href: '/my-posts', label: 'منشوراتي', icon: FileText, roles: ['medical_rep'] }, // مثال لصفحة أخرى للمندوب
+  { href: '/my-posts', label: 'منشوراتي', icon: FileText, roles: ['medical_rep'] },
 ];
 
 const pharmacyNavItems = [
   // يمكن إضافة روابط خاصة بالصيدليات هنا
-  // { href: '/browse-products', label: 'تصفح المنتجات', icon: ShoppingCart, roles: ['pharmacy'] },
 ];
 
 const commonNavItemsEnd = [
@@ -44,10 +42,15 @@ const profileNavItems = [
 export default function MainSidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const { currentUserRole, setCurrentUserRole } = useRole();
 
   const handleLogout = () => {
     console.log("Logging out...");
     router.push('/auth');
+  };
+
+  const handleRoleChange = (isRep: boolean) => {
+    setCurrentUserRole(isRep ? 'medical_rep' : 'pharmacy');
   };
 
   const availableNavItems = [
@@ -127,7 +130,30 @@ export default function MainSidebar() {
         </Accordion>
       </nav>
 
-      <div className="mt-auto">
+      <div className="p-2 mt-auto border-t border-border">
+        <div className="flex items-center justify-between mb-2">
+          <Label htmlFor="role-switcher" className="text-xs font-medium text-muted-foreground flex items-center">
+            <Repeat size={14} className="ml-1" />
+            تبديل الدور
+          </Label>
+          <span className="text-xs font-semibold text-primary">
+            {currentUserRole === 'medical_rep' ? 'مندوب' : 'صيدلية'}
+          </span>
+        </div>
+        <div className="flex items-center space-x-2 space-x-reverse">
+           <Switch
+            id="role-switcher"
+            checked={currentUserRole === 'medical_rep'}
+            onCheckedChange={handleRoleChange}
+            dir="ltr" 
+          />
+          <span className="text-sm text-muted-foreground">
+            {currentUserRole === 'medical_rep' ? 'مشاهدة كمندوب طبي' : 'مشاهدة كصيدلية'}
+          </span>
+        </div>
+      </div>
+
+      <div className="mt-2 pt-2 border-t border-border">
         <Button variant="ghost" className="w-full justify-start text-muted-foreground hover:bg-destructive/10 hover:text-destructive" onClick={handleLogout}>
           <LogOut className="ml-3 h-5 w-5" />
           تسجيل الخروج
@@ -136,5 +162,3 @@ export default function MainSidebar() {
     </aside>
   );
 }
-
-    

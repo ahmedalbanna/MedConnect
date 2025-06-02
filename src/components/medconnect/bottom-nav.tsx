@@ -5,10 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, MessageSquare, CalendarDays, User, Bell, PlusSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
-// في تطبيق حقيقي، سيتم تحديد هذا الدور بناءً على بيانات المستخدم المسجل دخوله.
-// لأغراض العرض، تم تعيينه إلى 'pharmacy'.
-const currentUserRole: 'pharmacy' | 'medical_rep' = 'pharmacy';
+import { useRole } from '@/contexts/role-context'; // Import useRole
 
 const baseNavItems = [
   { href: '/home', label: 'الرئيسية', icon: Home, roles: ['pharmacy', 'medical_rep'] },
@@ -31,6 +28,7 @@ const commonNavItemsEnd = [
 
 export default function BottomNav() {
   const pathname = usePathname();
+  const { currentUserRole } = useRole(); // Get role from context
 
   const navItems = [
     ...baseNavItems,
@@ -63,5 +61,3 @@ export default function BottomNav() {
     </nav>
   );
 }
-
-    

@@ -2,7 +2,7 @@
 
 import MembershipRequestCard from '@/components/admin/membership-request-card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } Awaited<Promise<unknown>>;
+import { useState } from 'react';
 
 const mockMembershipRequests = [
   {

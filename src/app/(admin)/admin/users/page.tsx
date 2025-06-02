@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Search, Filter, UserPlus } from 'lucide-react';
 import { useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card'; // Added Card and CardContent
 
 type User = {
   id: string;

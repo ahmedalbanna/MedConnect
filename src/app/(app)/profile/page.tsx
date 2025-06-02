@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -7,27 +8,27 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { Edit3, Shield, LogOut, MapPin, Phone, Mail, Building, Briefcase, CheckCircle, Clock } from 'lucide-react';
+import { Edit3, Shield, LogOut, MapPin, Phone, Mail, Building, Briefcase, CheckCircle, Clock, UserCircle } from 'lucide-react'; // Added UserCircle
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 // Mock user data - this would come from auth/database
 const mockUser = {
-  role: 'pharmacy' as 'pharmacy' | 'medical_rep', // 'pharmacy' or 'medical_rep'
-  displayName: 'صيدلية الحياة الجديدة',
-  email: 'pharmacy.life@example.com',
-  photoUrl: 'https://placehold.co/128x128.png?text=LH',
-  phoneNumber: '0501234567',
-  region: 'الرياض',
-  // Pharmacy specific
-  pharmacyName: 'صيدلية الحياة الجديدة',
-  address: 'شارع الملك فهد، حي العليا، الرياض',
-  licenseNumber: 'PH-12345',
+  role: 'medical_rep' as 'pharmacy' | 'medical_rep', // Changed to 'medical_rep' for demonstration
+  displayName: 'أحمد خليل (مندوب)', // Changed for rep
+  email: 'ahmed.khalil@rep.com', // Changed for rep
+  photoUrl: 'https://placehold.co/128x128.png?text=AK', // Changed for rep
+  phoneNumber: '0559876543', // Changed for rep
+  region: 'جدة', // Changed for rep
+  // Pharmacy specific (will be ignored for rep)
+  pharmacyName: '', 
+  address: '',
   // Rep specific
-  companyName: 'شركة الأدوية المتحدة',
-  specialty: 'أمراض القلب والأوعية الدموية',
-  bio: 'مندوب طبي متخصص في أدوية القلب، خبرة 5 سنوات في المجال.',
+  companyName: 'شركة الدواء المبتكر',
+  specialty: 'الأمراض الجلدية',
+  bio: 'مندوب طبي متخصص في أدوية الجلدية والعناية بالبشرة، خبرة 3 سنوات في تغطية منطقة جدة.',
   isApproved: true,
+  licenseNumber: 'MR-67890', // Added license for rep
 };
 
 
@@ -49,7 +50,7 @@ export default function ProfilePage() {
       <Card className="shadow-xl overflow-hidden">
         <CardHeader className="bg-muted/30 p-6 flex flex-col items-center text-center space-y-4">
           <Avatar className="h-32 w-32 border-4 border-background shadow-lg">
-            <AvatarImage src={user.photoUrl} alt={user.displayName} data-ai-hint="profile person" />
+            <AvatarImage src={user.photoUrl} alt={user.displayName} data-ai-hint="profile medical representative" />
             <AvatarFallback className="text-4xl">{user.displayName.substring(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
           <div>
@@ -130,10 +131,6 @@ export default function ProfilePage() {
                   <strong>التخصص:</strong>
                   <span className="mr-2 text-muted-foreground">{user.specialty}</span>
                 </div>
-                <div className="md:col-span-2">
-                   <strong>نبذة تعريفية:</strong>
-                   <p className="text-muted-foreground mt-1 bg-muted/50 p-3 rounded-md">{user.bio}</p>
-                </div>
                  {user.licenseNumber && (
                     <div className="flex items-center">
                         <Shield size={16} className="ml-3 text-muted-foreground" />
@@ -141,6 +138,10 @@ export default function ProfilePage() {
                         <span className="mr-2 text-muted-foreground">{user.licenseNumber}</span>
                     </div>
                 )}
+                <div className="md:col-span-2">
+                   <strong>نبذة تعريفية:</strong>
+                   <p className="text-muted-foreground mt-1 bg-muted/50 p-3 rounded-md">{user.bio}</p>
+                </div>
               </div>
             </div>
           )}
@@ -168,3 +169,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    

@@ -1,25 +1,43 @@
+
 "use client";
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, MessageSquare, CalendarDays, User, Settings, Bell, LogOut, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Home, MessageSquare, CalendarDays, User, Settings, Bell, LogOut, ShieldCheck, ChevronRight, PlusSquare, FileText } from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useRouter } from 'next/navigation';
 
-const mainNavItems = [
-  { href: '/home', label: 'الرئيسية', icon: Home },
-  { href: '/chat', label: 'الرسائل', icon: MessageSquare },
-  { href: '/calendar', label: 'التقويم', icon: CalendarDays },
-  { href: '/notifications', label: 'الإشعارات', icon: Bell },
+// في تطبيق حقيقي، سيتم تحديد هذا الدور بناءً على بيانات المستخدم المسجل دخوله.
+// لأغراض العرض، تم تعيينه إلى 'medical_rep'.
+const currentUserRole: 'pharmacy' | 'medical_rep' = 'medical_rep';
+
+const baseNavItems = [
+  { href: '/home', label: 'الرئيسية', icon: Home, roles: ['pharmacy', 'medical_rep'] },
+  { href: '/chat', label: 'الرسائل', icon: MessageSquare, roles: ['pharmacy', 'medical_rep'] },
+  { href: '/calendar', label: 'التقويم', icon: CalendarDays, roles: ['pharmacy', 'medical_rep'] },
+];
+
+const medicalRepNavItems = [
+  { href: '/create-post', label: 'إنشاء منشور', icon: PlusSquare, roles: ['medical_rep'] },
+  { href: '/my-posts', label: 'منشوراتي', icon: FileText, roles: ['medical_rep'] }, // مثال لصفحة أخرى للمندوب
+];
+
+const pharmacyNavItems = [
+  // يمكن إضافة روابط خاصة بالصيدليات هنا
+  // { href: '/browse-products', label: 'تصفح المنتجات', icon: ShoppingCart, roles: ['pharmacy'] },
+];
+
+const commonNavItemsEnd = [
+  { href: '/notifications', label: 'الإشعارات', icon: Bell, roles: ['pharmacy', 'medical_rep'] },
 ];
 
 const profileNavItems = [
-  { href: '/profile', label: 'الملف الشخصي', icon: User },
-  { href: '/settings', label: 'الإعدادات', icon: Settings },
-  { href: '/settings/security-privacy', label: 'الأمان والخصوصية', icon: ShieldCheck },
+  { href: '/profile', label: 'الملف الشخصي', icon: User, roles: ['pharmacy', 'medical_rep'] },
+  { href: '/settings', label: 'الإعدادات', icon: Settings, roles: ['pharmacy', 'medical_rep'] },
+  { href: '/settings/security-privacy', label: 'الأمان والخصوصية', icon: ShieldCheck, roles: ['pharmacy', 'medical_rep'] },
 ];
 
 
@@ -28,10 +46,16 @@ export default function MainSidebar() {
   const router = useRouter();
 
   const handleLogout = () => {
-    // Perform logout logic here
     console.log("Logging out...");
     router.push('/auth');
   };
+
+  const availableNavItems = [
+    ...baseNavItems,
+    ...(currentUserRole === 'medical_rep' ? medicalRepNavItems : []),
+    ...(currentUserRole === 'pharmacy' ? pharmacyNavItems : []),
+    ...commonNavItemsEnd,
+  ].filter(item => item.roles.includes(currentUserRole));
 
   return (
     <aside className="hidden md:flex flex-col w-64 min-h-screen bg-card border-l border-border p-4 shadow-lg fixed top-0 right-0">
@@ -49,7 +73,7 @@ export default function MainSidebar() {
       
       <nav className="flex-grow space-y-2">
         <h2 className="text-xs font-semibold text-muted-foreground px-2 uppercase tracking-wider">القائمة الرئيسية</h2>
-        {mainNavItems.map((item) => {
+        {availableNavItems.map((item) => {
           const isActive = pathname === item.href || (item.href !== '/home' && pathname.startsWith(item.href));
           return (
             <Link key={item.href} href={item.href} legacyBehavior>
@@ -79,7 +103,7 @@ export default function MainSidebar() {
             </AccordionTrigger>
             <AccordionContent className="pb-0">
               <div className="space-y-1 mt-1 mr-4 border-r-2 border-primary/20 pr-4">
-                {profileNavItems.map((item) => {
+                {profileNavItems.filter(item => item.roles.includes(currentUserRole)).map((item) => {
                   const isActive = pathname === item.href;
                   return (
                     <Link key={item.href} href={item.href} legacyBehavior>
@@ -112,3 +136,5 @@ export default function MainSidebar() {
     </aside>
   );
 }
+
+    

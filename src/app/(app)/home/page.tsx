@@ -1,7 +1,39 @@
+
 import PostCard from '@/components/medconnect/post-card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search, Filter } from 'lucide-react';
+import { Search, Filter, PlusCircle } from 'lucide-react';
+import Link from 'next/link';
+
+// بيانات وهمية لمنشورات الصيدليات (ما يراه المندوب)
+// أو يمكن أن تكون هذه قائمة بمنشورات المندوب نفسه
+const mockRepPosts = [
+  {
+    id: '1',
+    repName: 'أحمد محمود', // اسم المندوب
+    repAvatarUrl: 'https://placehold.co/40x40.png?text=AM',
+    companyName: 'شركة الأدوية الحديثة',
+    createdAt: new Date().toISOString(),
+    title: 'إطلاق منتج جديد: دواء X لعلاج ارتفاع ضغط الدم',
+    content: 'يسرنا الإعلان عن إطلاق دواء X...',
+    imageUrl: 'https://placehold.co/600x400.png',
+    likesCount: 120,
+    commentsCount: 15,
+    views: 1578, // مثال لعدد المشاهدات
+  },
+  {
+    id: '2',
+    repName: 'أحمد محمود',
+    repAvatarUrl: 'https://placehold.co/40x40.png?text=AM',
+    companyName: 'شركة الأدوية الحديثة',
+    createdAt: new Date(Date.now() - 86400000).toISOString(), // Yesterday
+    title: 'تذكير بالندوة التعريفية حول دواء Y',
+    content: 'لا تنسوا ندوتنا التعريفية غداً...',
+    likesCount: 90,
+    commentsCount: 10,
+    views: 1200,
+  },
+];
 
 const mockPharmacyPosts = [
   {
@@ -43,14 +75,22 @@ const mockPharmacyPosts = [
 
 
 export default function HomePage() {
-  // This would eventually be determined by user role
-  const userRole: 'pharmacy' | 'medical_rep' = 'pharmacy'; 
+  // في تطبيق حقيقي، سيتم تحديد هذا الدور بناءً على بيانات المستخدم المسجل دخوله.
+  // لأغراض العرض، تم تعيينه إلى 'medical_rep'.
+  const userRole: 'pharmacy' | 'medical_rep' = 'medical_rep'; 
 
   return (
     <div className="container mx-auto p-4 sm:p-6 lg:p-8">
       <header className="mb-6">
-        <h1 className="text-3xl font-headline text-primary">آخر المستجدات</h1>
-        <p className="text-muted-foreground">اكتشف آخر المنشورات والعروض من مندوبي الأدوية.</p>
+        <h1 className="text-3xl font-headline text-primary">
+          {userRole === 'pharmacy' ? 'آخر المستجدات' : 'لوحة تحكم المندوب'}
+        </h1>
+        <p className="text-muted-foreground">
+          {userRole === 'pharmacy' 
+            ? 'اكتشف آخر المنشورات والعروض من مندوبي الأدوية.'
+            : 'نظرة عامة على منشوراتك وأدائك.'
+          }
+        </p>
       </header>
 
       <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -62,6 +102,14 @@ export default function HomePage() {
           <Filter className="ml-2 h-4 w-4" />
           تصفية
         </Button>
+        {userRole === 'medical_rep' && (
+          <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
+            <Link href="/create-post">
+              <PlusCircle className="ml-2 h-5 w-5" />
+              إنشاء منشور جديد
+            </Link>
+          </Button>
+        )}
       </div>
 
       {userRole === 'pharmacy' && (
@@ -73,22 +121,35 @@ export default function HomePage() {
       )}
 
       {userRole === 'medical_rep' && (
-        <div className="bg-card p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-4">ملخص أداء مندوب المبيعات</h2>
-          <p className="text-muted-foreground">هنا سيتم عرض ملخص لأداء المنشورات أو أحدث طلبات الصيدليات.</p>
-          {/* Placeholder content for medical representative */}
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-4 bg-muted rounded-md">
-              <h3 className="font-semibold">إجمالي المشاهدات</h3>
-              <p className="text-2xl text-primary">15,780</p>
+        <div>
+          <div className="mb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="p-4 bg-card rounded-lg shadow">
+              <h3 className="font-semibold text-muted-foreground">إجمالي المشاهدات</h3>
+              <p className="text-2xl text-primary font-bold">15,780</p>
             </div>
-            <div className="p-4 bg-muted rounded-md">
-              <h3 className="font-semibold">التفاعلات هذا الأسبوع</h3>
-              <p className="text-2xl text-primary">350</p>
+            <div className="p-4 bg-card rounded-lg shadow">
+              <h3 className="font-semibold text-muted-foreground">التفاعلات هذا الأسبوع</h3>
+              <p className="text-2xl text-primary font-bold">350</p>
+            </div>
+            <div className="p-4 bg-card rounded-lg shadow">
+              <h3 className="font-semibold text-muted-foreground">إجمالي المنشورات</h3>
+              <p className="text-2xl text-primary font-bold">{mockRepPosts.length}</p>
             </div>
           </div>
+          <h2 className="text-xl font-semibold mb-4 text-primary">منشوراتي الأخيرة</h2>
+          {mockRepPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {mockRepPosts.map((post) => (
+                <PostCard key={post.id} post={post} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-muted-foreground py-8">لم تقم بنشر أي شيء بعد.</p>
+          )}
         </div>
       )}
     </div>
   );
 }
+
+    

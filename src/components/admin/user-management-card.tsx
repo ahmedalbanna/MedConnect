@@ -33,7 +33,7 @@ const roleTranslations = {
 
 export default function UserManagementCard({ user, onEdit, onToggleActive, onApprove, onReject }: UserManagementCardProps) {
   return (
-    <Card className="shadow-sm hover:shadow-md transition-shadow">
+    <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
       <CardContent className="p-4 flex items-center space-x-4 space-x-reverse">
         <Avatar className="h-12 w-12">
           <AvatarImage src={user.avatarUrl || `https://placehold.co/48x48.png?text=${user.name.substring(0,1)}`} alt={user.name} data-ai-hint="profile person"/>

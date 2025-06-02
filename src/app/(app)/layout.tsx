@@ -11,7 +11,7 @@ export default function AppLayout({
   return (
     <RoleProvider>
       <div className="flex min-h-screen">
-        {/* MainSidebar already uses fixed end-0 for RTL */}
+        {/* MainSidebar already uses fixed start-0 for RTL */}
         <MainSidebar /> 
          {/* Adjust margin for RTL: if sidebar is on the right (end), main content needs margin-inline-start */}
         <div className="flex-1 md:ms-64"> 

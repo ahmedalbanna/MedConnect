@@ -61,7 +61,7 @@ export default function MainSidebar() {
   ].filter(item => item.roles.includes(currentUserRole));
 
   return (
-    <aside className="hidden md:flex flex-col w-64 min-h-screen bg-card border-s border-border p-4 shadow-lg fixed top-0 end-0">
+    <aside className="hidden md:flex flex-col w-64 min-h-screen bg-card border-s border-border p-4 shadow-lg fixed top-0 start-0">
       <div className="flex items-center mb-8 p-2">
         <Image 
           src="https://placehold.co/40x40.png" 

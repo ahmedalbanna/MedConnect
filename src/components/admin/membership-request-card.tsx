@@ -13,6 +13,7 @@ interface MembershipRequestCardProps {
     companyName: string;
     licenseImageUrl: string; // URL to the license image
     submissionDate: string; // ISO string
+    dataAiHint?: string;
   };
   onApprove: (requestId: string) => void;
   onReject: (requestId: string) => void;
@@ -22,7 +23,7 @@ export default function MembershipRequestCard({ request, onApprove, onReject }: 
   const formattedDate = new Date(request.submissionDate).toLocaleDateString('ar-EG', { year: 'numeric', month: 'short', day: 'numeric' });
 
   return (
-    <Card className="shadow-sm hover:shadow-md transition-shadow">
+    <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
       <CardHeader className="p-3 flex flex-row items-center space-x-3 space-x-reverse">
         <Avatar className="h-10 w-10">
           <AvatarImage src={request.repAvatarUrl || `https://placehold.co/40x40.png?text=${request.repName.substring(0,1)}`} alt={request.repName} data-ai-hint="profile person medical" />
@@ -53,7 +54,7 @@ export default function MembershipRequestCard({ request, onApprove, onReject }: 
                 width={800} 
                 height={600} 
                 className="rounded-md object-contain w-full h-auto"
-                data-ai-hint="license document"
+                data-ai-hint={request.dataAiHint || "license document"}
               />
             </div>
           </DialogContent>

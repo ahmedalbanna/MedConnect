@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Paperclip, Mic, Send, Search, UserCircle, MessageSquare } from 'lucide-react'; // Added MessageSquare
+import { Paperclip, Mic, Send, Search, UserCircle, MessageSquare } from 'lucide-react'; 
 import { cn } from '@/lib/utils';
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "@/components/ui/command";
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -83,7 +83,7 @@ export default function AdminChatPage() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-100px)] max-h-[calc(100vh-100px)] border rounded-lg shadow-xl overflow-hidden">
+    <div className="flex flex-col flex-1 border rounded-lg shadow-xl overflow-hidden">
       <header className="flex items-center p-3 border-b bg-card shadow-sm sticky top-0 z-10">
         {selectedUser ? (
           <>

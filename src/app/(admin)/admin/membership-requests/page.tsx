@@ -11,6 +11,7 @@ const mockMembershipRequests = [
     companyName: 'الشركة الطبية المتقدمة',
     licenseImageUrl: 'https://placehold.co/800x600.png',
     submissionDate: new Date().toISOString(),
+    dataAiHint: "document business"
   },
   {
     id: 'req2',
@@ -19,6 +20,7 @@ const mockMembershipRequests = [
     companyName: 'مؤسسة الرعاية الصحية',
     licenseImageUrl: 'https://placehold.co/800x600.png',
     submissionDate: new Date(Date.now() - 86400000 * 2).toISOString(), // 2 days ago
+    dataAiHint: "document contract"
   },
   {
     id: 'req3',
@@ -26,6 +28,7 @@ const mockMembershipRequests = [
     companyName: 'الحلول الدوائية المتكاملة',
     licenseImageUrl: 'https://placehold.co/800x600.png',
     submissionDate: new Date(Date.now() - 86400000 * 5).toISOString(), // 5 days ago
+    dataAiHint: "certificate paper"
   },
 ];
 

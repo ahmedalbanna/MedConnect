@@ -24,16 +24,16 @@ export default function WelcomePage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-end"> {/* text-right to text-end */}
-              <div className="p-4 bg-primary/5 rounded-lg">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4"> {/* Removed text-end, default to start or inherit */}
+              <div className="p-4 bg-primary/5 rounded-lg text-start">
                 <h3 className="text-xl font-semibold text-primary mb-2">تواصل فعال</h3>
                 <p className="text-sm"> دردشة مباشرة وجدولة مواعيد بسهولة.</p>
               </div>
-              <div className="p-4 bg-primary/5 rounded-lg">
+              <div className="p-4 bg-primary/5 rounded-lg text-start">
                 <h3 className="text-xl font-semibold text-primary mb-2">محتوى مخصص</h3>
                 <p className="text-sm">آخر تحديثات المنتجات والعروض للصيدليات.</p>
               </div>
-              <div className="p-4 bg-primary/5 rounded-lg">
+              <div className="p-4 bg-primary/5 rounded-lg text-start">
                 <h3 className="text-xl font-semibold text-primary mb-2">إدارة سهلة</h3>
                 <p className="text-sm"> أدوات إدارية قوية للمشرفين.</p>
               </div>
@@ -46,7 +46,7 @@ export default function WelcomePage() {
             <Button asChild size="lg" className="w-full sm:w-auto">
               <Link href="/auth">
                 ابدأ الآن
-                <ChevronLeft className="me-2 h-5 w-5"/> {/* ChevronRight, mr-2 to me-2 */}
+                <ChevronLeft className="me-2 h-5 w-5"/> 
               </Link>
             </Button>
           </CardFooter>

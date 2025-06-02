@@ -62,7 +62,7 @@ export default function NotificationsPage() {
           <p className="text-muted-foreground">تابع آخر التنبيهات والتحديثات الخاصة بك.</p>
         </div>
         <Button variant="outline" size="sm">
-          <CheckCheck className="ml-2 h-4 w-4" />
+          <CheckCheck className="ms-2 h-4 w-4" />
           وضع علامة "مقروء" للكل
         </Button>
       </header>

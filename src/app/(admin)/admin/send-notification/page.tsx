@@ -81,11 +81,11 @@ export default function SendNotificationPage() {
                   <SelectValue placeholder="اختر الجمهور المستهدف" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all_users"><Users size={16} className="inline ml-2" /> جميع المستخدمين</SelectItem>
-                  <SelectItem value="all_pharmacies"><Building size={16} className="inline ml-2" /> جميع الصيدليات</SelectItem>
-                  <SelectItem value="all_reps"><Briefcase size={16} className="inline ml-2" /> جميع المندوبين</SelectItem>
-                  <SelectItem value="specific_region"><MapPin size={16} className="inline ml-2" /> منطقة محددة</SelectItem>
-                  <SelectItem value="specific_user"><User size={16} className="inline ml-2" /> مستخدم محدد</SelectItem>
+                  <SelectItem value="all_users"><Users size={16} className="inline ms-2" /> جميع المستخدمين</SelectItem>
+                  <SelectItem value="all_pharmacies"><Building size={16} className="inline ms-2" /> جميع الصيدليات</SelectItem>
+                  <SelectItem value="all_reps"><Briefcase size={16} className="inline ms-2" /> جميع المندوبين</SelectItem>
+                  <SelectItem value="specific_region"><MapPin size={16} className="inline ms-2" /> منطقة محددة</SelectItem>
+                  <SelectItem value="specific_user"><User size={16} className="inline ms-2" /> مستخدم محدد</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -105,7 +105,7 @@ export default function SendNotificationPage() {
             )}
             
             <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" disabled={form.formState.isSubmitting}>
-              <Send className="ml-2 h-4 w-4" /> 
+              <Send className="ms-2 h-4 w-4" /> 
               {form.formState.isSubmitting ? 'جارٍ الإرسال...' : 'إرسال الإشعار'}
             </Button>
           </CardContent>

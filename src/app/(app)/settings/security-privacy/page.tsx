@@ -20,13 +20,13 @@ export default function SecurityPrivacyPage() {
             في MedConnect، نلتزم بحماية خصوصيتك وأمان معلوماتك. توضح هذه السياسة أنواع المعلومات التي قد نجمعها منك أو التي قد تقدمها عند زيارتك أو استخدامك لتطبيق MedConnect وكيفية استخدامنا وحمايتنا لتلك المعلومات.
           </p>
           <h4 className="font-semibold pt-2">المعلومات التي نجمعها:</h4>
-          <ul className="list-disc list-inside space-y-1 mr-4">
+          <ul className="list-disc list-inside space-y-1 ms-4">
             <li>المعلومات الشخصية التي تقدمها عند التسجيل (الاسم، البريد الإلكتروني، الدور، إلخ).</li>
             <li>بيانات الاستخدام، بما في ذلك معلومات حول كيفية تفاعلك مع التطبيق.</li>
             <li>المحتوى الذي تنشئه أو تشاركه (المنشورات، الرسائل، المرفقات).</li>
           </ul>
            <h4 className="font-semibold pt-2">كيف نستخدم معلوماتك:</h4>
-           <ul className="list-disc list-inside space-y-1 mr-4">
+           <ul className="list-disc list-inside space-y-1 ms-4">
             <li>لتقديم وتحسين خدماتنا.</li>
             <li>لتخصيص تجربتك داخل التطبيق.</li>
             <li>للتواصل معك بخصوص حسابك أو خدماتنا.</li>
@@ -36,7 +36,7 @@ export default function SecurityPrivacyPage() {
             نحن لا نشارك معلوماتك الشخصية مع أطراف ثالثة إلا وفقًا لما هو منصوص عليه في سياسة الخصوصية الكاملة أو بموافقتك.
           </p>
           <a href="#" className="text-primary hover:underline font-medium flex items-center">
-            <FileText size={16} className="ml-2" /> اقرأ سياسة الخصوصية الكاملة
+            <FileText size={16} className="ms-2" /> اقرأ سياسة الخصوصية الكاملة
           </a>
         </CardContent>
       </Card>
@@ -51,7 +51,7 @@ export default function SecurityPrivacyPage() {
             باستخدامك لتطبيق MedConnect، فإنك توافق على الالتزام بشروط الخدمة هذه. يرجى قراءتها بعناية.
           </p>
           <h4 className="font-semibold pt-2">الاستخدام المقبول:</h4>
-           <ul className="list-disc list-inside space-y-1 mr-4">
+           <ul className="list-disc list-inside space-y-1 ms-4">
             <li>يجب استخدام التطبيق فقط للأغراض المشروعة المتعلقة بالتواصل المهني في القطاع الطبي.</li>
             <li>يمنع نشر أي محتوى غير قانوني أو مسيء أو ينتهك حقوق الملكية الفكرية.</li>
             <li>يجب عدم محاولة الوصول غير المصرح به إلى حسابات المستخدمين الآخرين أو أنظمة التطبيق.</li>
@@ -60,7 +60,7 @@ export default function SecurityPrivacyPage() {
             تحتفظ MedConnect بالحق في تعليق أو إنهاء حسابك إذا انتهكت هذه الشروط.
           </p>
            <a href="#" className="text-primary hover:underline font-medium flex items-center">
-            <Users size={16} className="ml-2" /> اقرأ شروط الخدمة الكاملة
+            <Users size={16} className="ms-2" /> اقرأ شروط الخدمة الكاملة
           </a>
         </CardContent>
       </Card>

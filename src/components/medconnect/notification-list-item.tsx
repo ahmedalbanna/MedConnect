@@ -43,12 +43,12 @@ export default function NotificationListItem({ notification }: NotificationListI
   const content = (
     <div className={cn(
       "flex items-start space-x-4 space-x-reverse p-4 rounded-lg transition-colors",
-      notification.isRead ? 'bg-card hover:bg-muted/50' : 'bg-primary/5 hover:bg-primary/10 border-r-4 border-primary'
+      notification.isRead ? 'bg-card hover:bg-muted/50' : 'bg-primary/5 hover:bg-primary/10 border-s-4 border-primary'
     )}>
       <div className={cn("p-2 rounded-full", typeColors[notification.type])}>
         <Icon size={20} />
       </div>
-      <div className="flex-1 text-right">
+      <div className="flex-1 text-end">
         <h4 className={cn("font-semibold text-sm", notification.isRead ? "text-foreground" : "text-primary")}>{notification.title}</h4>
         <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{notification.body}</p>
         <p className="text-xs text-muted-foreground/70 mt-1">{formattedTime}</p>

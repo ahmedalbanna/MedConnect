@@ -23,7 +23,7 @@ export default function ChatPreviewCard({ chat }: ChatPreviewCardProps) {
             <AvatarImage src={chat.otherPartyAvatarUrl || `https://placehold.co/48x48.png?text=${chat.otherPartyName.substring(0,1)}`} alt={chat.otherPartyName} data-ai-hint="profile person" />
             <AvatarFallback>{chat.otherPartyName.substring(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
-          <div className="flex-1 min-w-0 text-right">
+          <div className="flex-1 min-w-0 text-end">
             <div className="flex justify-between items-center mb-0.5">
               <h3 className="text-sm font-semibold truncate">{chat.otherPartyName}</h3>
               <p className="text-xs text-muted-foreground">{new Date(chat.lastMessageTime).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</p>

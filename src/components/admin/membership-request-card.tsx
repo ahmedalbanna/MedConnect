@@ -28,7 +28,7 @@ export default function MembershipRequestCard({ request, onApprove, onReject }: 
           <AvatarImage src={request.repAvatarUrl || `https://placehold.co/40x40.png?text=${request.repName.substring(0,1)}`} alt={request.repName} data-ai-hint="profile person medical" />
           <AvatarFallback>{request.repName.substring(0, 2).toUpperCase()}</AvatarFallback>
         </Avatar>
-        <div className="flex-1 min-w-0 text-right">
+        <div className="flex-1 min-w-0 text-end">
           <CardTitle className="text-sm font-semibold">{request.repName}</CardTitle>
           <p className="text-xs text-muted-foreground">{request.companyName}</p>
           <p className="text-xs text-muted-foreground">تاريخ التقديم: {formattedDate}</p>
@@ -38,7 +38,7 @@ export default function MembershipRequestCard({ request, onApprove, onReject }: 
         <Dialog>
           <DialogTrigger asChild>
             <Button variant="outline" size="sm" className="w-full text-primary border-primary hover:bg-primary/10">
-              <Eye size={16} className="ml-2" /> عرض صورة الرخصة
+              <Eye size={16} className="ms-2" /> عرض صورة الرخصة
             </Button>
           </DialogTrigger>
           <DialogContent className="max-w-lg p-0" dir="rtl">
@@ -61,10 +61,10 @@ export default function MembershipRequestCard({ request, onApprove, onReject }: 
       </CardContent>
       <CardFooter className="p-3 flex justify-end space-x-2 space-x-reverse">
         <Button variant="destructive" size="sm" onClick={() => onReject(request.id)}>
-          <XCircle size={16} className="ml-2" /> رفض
+          <XCircle size={16} className="ms-2" /> رفض
         </Button>
         <Button variant="default" size="sm" className="bg-green-600 hover:bg-green-700 text-white" onClick={() => onApprove(request.id)}>
-          <CheckCircle size={16} className="ml-2" /> موافقة
+          <CheckCircle size={16} className="ms-2" /> موافقة
         </Button>
       </CardFooter>
     </Card>

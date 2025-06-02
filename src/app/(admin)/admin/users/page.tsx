@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Search, Filter, UserPlus } from 'lucide-react';
 import { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card'; // Added Card and CardContent
+import { Card, CardContent } from '@/components/ui/card'; 
 
 type User = {
   id: string;
@@ -64,7 +64,7 @@ export default function ManageUsersPage() {
           <p className="text-muted-foreground">عرض وتعديل حسابات المستخدمين.</p>
         </div>
         <Button className="mt-4 sm:mt-0 bg-accent hover:bg-accent/90 text-accent-foreground">
-          <UserPlus className="ml-2 h-4 w-4" /> إضافة مستخدم جديد
+          <UserPlus className="ms-2 h-4 w-4" /> إضافة مستخدم جديد
         </Button>
       </header>
 
@@ -75,11 +75,11 @@ export default function ManageUsersPage() {
               <Input 
                 type="search" 
                 placeholder="ابحث بالاسم أو البريد الإلكتروني..." 
-                className="pr-10"
+                className="ps-10"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Search className="absolute end-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             </div>
             <div className="flex gap-2">
               <Select value={roleFilter} onValueChange={setRoleFilter}>

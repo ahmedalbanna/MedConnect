@@ -12,7 +12,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Eye, EyeOff, LogIn, UserPlus, Briefcase, Building } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation'; // Changed from 'next/navigation'
+import { useRouter } from 'next/navigation'; 
 
 const loginSchema = z.object({
   email: z.string().email({ message: "البريد الإلكتروني غير صالح" }),
@@ -85,10 +85,10 @@ export default function AuthForm() {
       <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'login' | 'register')} className="w-full">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="login" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            <LogIn className="ml-2 h-4 w-4" /> تسجيل الدخول
+            <LogIn className="ms-2 h-4 w-4" /> تسجيل الدخول
           </TabsTrigger>
           <TabsTrigger value="register" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            <UserPlus className="ml-2 h-4 w-4" /> إنشاء حساب
+            <UserPlus className="ms-2 h-4 w-4" /> إنشاء حساب
           </TabsTrigger>
         </TabsList>
         <TabsContent value="login">
@@ -106,7 +106,7 @@ export default function AuthForm() {
               <div className="space-y-2 relative">
                 <Label htmlFor="login-password">كلمة المرور</Label>
                 <Input id="login-password" type={showPassword ? "text" : "password"} placeholder="********" {...loginForm.register('password')} />
-                <Button type="button" variant="ghost" size="icon" className="absolute left-1 top-7 h-7 w-7 text-muted-foreground" onClick={togglePasswordVisibility}>
+                <Button type="button" variant="ghost" size="icon" className="absolute start-1 top-7 h-7 w-7 text-muted-foreground" onClick={togglePasswordVisibility}>
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </Button>
                 {loginForm.formState.errors.password && <p className="text-sm text-destructive">{loginForm.formState.errors.password.message}</p>}
@@ -144,7 +144,7 @@ export default function AuthForm() {
               <div className="space-y-2 relative">
                 <Label htmlFor="register-password">كلمة المرور</Label>
                 <Input id="register-password" type={showPassword ? "text" : "password"} placeholder="********" {...registerForm.register('password')} />
-                 <Button type="button" variant="ghost" size="icon" className="absolute left-1 top-7 h-7 w-7 text-muted-foreground" onClick={togglePasswordVisibility}>
+                 <Button type="button" variant="ghost" size="icon" className="absolute start-1 top-7 h-7 w-7 text-muted-foreground" onClick={togglePasswordVisibility}>
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </Button>
                 {registerForm.formState.errors.password && <p className="text-sm text-destructive">{registerForm.formState.errors.password.message}</p>}
@@ -152,7 +152,7 @@ export default function AuthForm() {
               <div className="space-y-2 relative">
                 <Label htmlFor="confirmPassword">تأكيد كلمة المرور</Label>
                 <Input id="confirmPassword" type={showConfirmPassword ? "text" : "password"} placeholder="********" {...registerForm.register('confirmPassword')} />
-                 <Button type="button" variant="ghost" size="icon" className="absolute left-1 top-7 h-7 w-7 text-muted-foreground" onClick={toggleConfirmPasswordVisibility}>
+                 <Button type="button" variant="ghost" size="icon" className="absolute start-1 top-7 h-7 w-7 text-muted-foreground" onClick={toggleConfirmPasswordVisibility}>
                   {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </Button>
                 {registerForm.formState.errors.confirmPassword && <p className="text-sm text-destructive">{registerForm.formState.errors.confirmPassword.message}</p>}
@@ -165,15 +165,15 @@ export default function AuthForm() {
                      registerForm.setValue('role', value as 'pharmacy' | 'medical_rep');
                   }}
                   className="flex gap-4"
-                  dir="rtl"
+                  dir="rtl" 
                 >
                   <div className="flex items-center space-x-2 space-x-reverse">
                     <RadioGroupItem value="pharmacy" id="role-pharmacy" />
-                    <Label htmlFor="role-pharmacy" className="font-normal flex items-center"><Building className="ml-2 h-4 w-4"/> صيدلية</Label>
+                    <Label htmlFor="role-pharmacy" className="font-normal flex items-center"><Building className="ms-2 h-4 w-4"/> صيدلية</Label>
                   </div>
                   <div className="flex items-center space-x-2 space-x-reverse">
                     <RadioGroupItem value="medical_rep" id="role-medical_rep" />
-                    <Label htmlFor="role-medical_rep" className="font-normal flex items-center"><Briefcase className="ml-2 h-4 w-4"/> مندوب طبي</Label>
+                    <Label htmlFor="role-medical_rep" className="font-normal flex items-center"><Briefcase className="ms-2 h-4 w-4"/> مندوب طبي</Label>
                   </div>
                 </RadioGroup>
                 {registerForm.formState.errors.role && <p className="text-sm text-destructive">{registerForm.formState.errors.role.message}</p>}

@@ -20,7 +20,7 @@ export default function AuthPage() {
       <AuthForm />
       <Button asChild variant="outline" className="mt-6">
         <Link href="/admin/dashboard">
-          <Shield className="ml-2 h-4 w-4" />
+          <Shield className="ms-2 h-4 w-4" /> {/* ml-2 to ms-2 */}
           لوحة تحكم المسؤول
         </Link>
       </Button>

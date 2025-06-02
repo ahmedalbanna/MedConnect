@@ -54,7 +54,7 @@ export default function CalendarPage() {
         </div>
         {userRole === 'pharmacy' && (
           <Button className="mt-4 sm:mt-0 bg-accent hover:bg-accent/90 text-accent-foreground">
-            <PlusCircle className="ml-2 h-5 w-5" />
+            <PlusCircle className="ms-2 h-5 w-5" />
             طلب موعد جديد
           </Button>
         )}
@@ -82,7 +82,7 @@ export default function CalendarPage() {
                   مواعيد {selectedDate ? new Date(selectedDate).toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long' }) : 'اليوم'}
                 </CardTitle>
                 <Button variant="outline" size="sm">
-                  <ListFilter className="ml-2 h-4 w-4"/>
+                  <ListFilter className="ms-2 h-4 w-4"/>
                   تصفية الحالة
                 </Button>
               </div>

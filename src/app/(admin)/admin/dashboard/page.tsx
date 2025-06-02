@@ -36,14 +36,14 @@ export default function AdminDashboardPage() {
         <Card className="lg:col-span-2 shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center">
-              <BarChart3 className="ml-2 h-5 w-5 text-primary" />
+              <BarChart3 className="ms-2 h-5 w-5 text-primary" />
               توزيع المستخدمين حسب المنطقة
             </CardTitle>
             <CardDescription>عدد المستخدمين (صيدليات ومندوبين) في المناطق الرئيسية.</CardDescription>
           </CardHeader>
           <CardContent className="h-[300px] pt-4">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={regionData} layout="vertical" margin={{ right: 30 }}>
+              <BarChart data={regionData} layout="vertical" margin={{ left: 30, right: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" horizontal={false} />
                 <XAxis type="number" />
                 <YAxis dataKey="name" type="category" width={80} tickLine={false} axisLine={false} />
@@ -66,22 +66,22 @@ export default function AdminDashboardPage() {
           <CardContent className="space-y-3">
             <Button asChild variant="outline" className="w-full justify-start">
               <Link href="/admin/users">
-                <Users className="ml-2 h-4 w-4" /> إدارة المستخدمين
+                <Users className="ms-2 h-4 w-4" /> إدارة المستخدمين
               </Link>
             </Button>
             <Button asChild variant="outline" className="w-full justify-start">
               <Link href="/admin/membership-requests">
-                <UserCheck className="ml-2 h-4 w-4" /> إدارة طلبات العضوية
+                <UserCheck className="ms-2 h-4 w-4" /> إدارة طلبات العضوية
               </Link>
             </Button>
             <Button asChild variant="outline" className="w-full justify-start">
               <Link href="/admin/send-notification">
-                <BellPlus className="ml-2 h-4 w-4" /> إرسال إشعار عام
+                <BellPlus className="ms-2 h-4 w-4" /> إرسال إشعار عام
               </Link>
             </Button>
              <Button asChild variant="outline" className="w-full justify-start">
               <Link href="/admin/chat">
-                <MessageSquare className="ml-2 h-4 w-4" /> إرسال رسالة مباشرة
+                <MessageSquare className="ms-2 h-4 w-4" /> إرسال رسالة مباشرة
               </Link>
             </Button>
           </CardContent>

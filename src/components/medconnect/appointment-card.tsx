@@ -44,24 +44,24 @@ export default function AppointmentCard({ appointment, userRole }: AppointmentCa
             <AvatarImage src={appointment.otherPartyAvatarUrl || `https://placehold.co/40x40.png?text=${appointment.otherPartyName.substring(0,1)}`} alt={appointment.otherPartyName} data-ai-hint="profile person" />
             <AvatarFallback>{appointment.otherPartyName.substring(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
-          <div className="text-right">
+          <div className="text-end">
             <CardTitle className="text-md font-semibold">{appointment.otherPartyName}</CardTitle>
             <p className="text-xs text-muted-foreground">
               {appointment.otherPartyRole === 'pharmacy' ? 'صيدلية' : 'مندوب طبي'}
             </p>
           </div>
-          <Badge variant="outline" className={cn("mr-auto text-xs py-1 px-2 border", statusStyles[appointment.status])}>
+          <Badge variant="outline" className={cn("ms-auto text-xs py-1 px-2 border", statusStyles[appointment.status])}>
             {statusTranslations[appointment.status]}
           </Badge>
         </div>
       </CardHeader>
       <CardContent className="p-4 space-y-3 text-sm">
         <div className="flex items-center text-muted-foreground">
-          <CalendarDays size={16} className="ml-2 text-primary" />
+          <CalendarDays size={16} className="ms-2 text-primary" />
           <span>{formattedDate}</span>
         </div>
         <div className="flex items-center text-muted-foreground">
-          <Clock size={16} className="ml-2 text-primary" />
+          <Clock size={16} className="ms-2 text-primary" />
           <span>{appointment.time}</span>
         </div>
       </CardContent>
@@ -77,7 +77,7 @@ export default function AppointmentCard({ appointment, userRole }: AppointmentCa
         )}
         {(appointment.status === 'confirmed' || appointment.status === 'completed') && (
           <Button variant="ghost" size="sm" className="text-primary hover:bg-primary/10">
-            <MessageSquare size={16} className="ml-2" />
+            <MessageSquare size={16} className="ms-2" />
             مراسلة
           </Button>
         )}

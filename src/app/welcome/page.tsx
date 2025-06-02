@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChevronRight } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react'; // ChevronRight to ChevronLeft for RTL "next"
 import Image from 'next/image';
 
 export default function WelcomePage() {
@@ -24,7 +24,7 @@ export default function WelcomePage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-right">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-end"> {/* text-right to text-end */}
               <div className="p-4 bg-primary/5 rounded-lg">
                 <h3 className="text-xl font-semibold text-primary mb-2">تواصل فعال</h3>
                 <p className="text-sm"> دردشة مباشرة وجدولة مواعيد بسهولة.</p>
@@ -46,7 +46,7 @@ export default function WelcomePage() {
             <Button asChild size="lg" className="w-full sm:w-auto">
               <Link href="/auth">
                 ابدأ الآن
-                <ChevronRight className="mr-2 h-5 w-5"/>
+                <ChevronLeft className="me-2 h-5 w-5"/> {/* ChevronRight, mr-2 to me-2 */}
               </Link>
             </Button>
           </CardFooter>

@@ -1,12 +1,12 @@
 
-"use client"; // Add "use client" for context usage
+"use client"; 
 
 import PostCard from '@/components/medconnect/post-card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search, Filter, PlusCircle } from 'lucide-react';
 import Link from 'next/link';
-import { useRole } from '@/contexts/role-context'; // Import useRole
+import { useRole } from '@/contexts/role-context'; 
 
 const mockRepPosts = [
   {
@@ -38,7 +38,7 @@ const mockRepPosts = [
 
 const mockPharmacyPosts = [
   {
-    id: 'pharma-post-1', // Ensure unique IDs
+    id: 'pharma-post-1', 
     repName: 'أحمد محمود',
     repAvatarUrl: 'https://placehold.co/40x40.png?text=AM',
     companyName: 'شركة الأدوية الحديثة',
@@ -79,7 +79,7 @@ const mockPharmacyPosts = [
 
 
 export default function HomePage() {
-  const { currentUserRole } = useRole(); // Get role from context
+  const { currentUserRole } = useRole(); 
 
   return (
     <div className="container mx-auto p-4 sm:p-6 lg:p-8">
@@ -97,17 +97,17 @@ export default function HomePage() {
 
       <div className="flex flex-col sm:flex-row gap-4 mb-6">
         <div className="relative flex-grow">
-          <Input type="search" placeholder="ابحث في المنشورات..." className="pr-10" />
-          <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <Input type="search" placeholder="ابحث في المنشورات..." className="ps-10" />
+          <Search className="absolute end-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         </div>
         <Button variant="outline">
-          <Filter className="ml-2 h-4 w-4" />
+          <Filter className="ms-2 h-4 w-4" />
           تصفية
         </Button>
         {currentUserRole === 'medical_rep' && (
           <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
             <Link href="/create-post">
-              <PlusCircle className="ml-2 h-5 w-5" />
+              <PlusCircle className="ms-2 h-5 w-5" />
               إنشاء منشور جديد
             </Link>
           </Button>

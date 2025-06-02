@@ -11,9 +11,11 @@ export default function AppLayout({
   return (
     <RoleProvider>
       <div className="flex min-h-screen">
-        <MainSidebar />
-        <div className="flex-1 md:mr-64"> {/* Add margin for desktop sidebar */}
-          <main className="pb-16 md:pb-0"> {/* Add padding for mobile bottom nav */}
+        {/* MainSidebar already uses fixed end-0 for RTL */}
+        <MainSidebar /> 
+         {/* Adjust margin for RTL: if sidebar is on the right (end), main content needs margin-inline-start */}
+        <div className="flex-1 md:ms-64"> 
+          <main className="pb-16 md:pb-0"> 
             {children}
           </main>
         </div>

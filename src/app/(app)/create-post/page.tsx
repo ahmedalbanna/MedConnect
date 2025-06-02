@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowRight, ImagePlus, Send } from 'lucide-react';
+import { ArrowRight, ImagePlus, Send, ArrowLeft } from 'lucide-react'; // Changed ArrowRight to ArrowLeft for RTL "back"
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -49,7 +49,7 @@ export default function CreatePostPage() {
           <h1 className="text-3xl font-headline text-primary">إنشاء منشور جديد</h1>
           <Button variant="outline" asChild>
             <Link href="/home">
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowLeft className="ms-2 h-4 w-4" /> {/* Changed to ArrowLeft and ms-2 */}
               العودة إلى الرئيسية
             </Link>
           </Button>
@@ -99,7 +99,7 @@ export default function CreatePostPage() {
             </div>
             
             <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" disabled={form.formState.isSubmitting}>
-              <Send className="ml-2 h-4 w-4" /> 
+              <Send className="ms-2 h-4 w-4" /> 
               {form.formState.isSubmitting ? 'جارٍ النشر...' : 'نشر المنشور'}
             </Button>
           </CardContent>
@@ -108,5 +108,3 @@ export default function CreatePostPage() {
     </div>
   );
 }
-
-    

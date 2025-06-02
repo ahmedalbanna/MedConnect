@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, Bell, Shield, Languages, Palette } from 'lucide-react';
+import { ChevronLeft, Bell, Shield, Languages, Palette, ChevronRight } from 'lucide-react'; // ChevronRight if needed
 import Link from 'next/link';
 
 export default function SettingsPage() {
@@ -18,7 +18,7 @@ export default function SettingsPage() {
         <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center text-xl">
-              <Bell className="ml-3 text-primary" />
+              <Bell className="ms-3 text-primary" />
               تفضيلات الإشعارات
             </CardTitle>
             <CardDescription>تحكم في الإشعارات التي ترغب في استقبالها.</CardDescription>
@@ -46,7 +46,7 @@ export default function SettingsPage() {
         <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center text-xl">
-              <Shield className="ml-3 text-primary" />
+              <Shield className="ms-3 text-primary" />
               الأمان والخصوصية
             </CardTitle>
             <CardDescription>إدارة إعدادات الأمان والخصوصية الخاصة بك.</CardDescription>
@@ -55,7 +55,7 @@ export default function SettingsPage() {
             <Link href="/settings/security-privacy" legacyBehavior>
               <a className="flex items-center justify-between p-3 rounded-md hover:bg-muted/50 text-primary">
                 <span>عرض سياسة الخصوصية وشروط الخدمة</span>
-                <ChevronLeft size={20} />
+                <ChevronLeft size={20} /> {/* For RTL, "go to" can be ChevronLeft */}
               </a>
             </Link>
              <Button variant="outline" className="w-full mt-4">تغيير كلمة المرور</Button>
@@ -65,7 +65,7 @@ export default function SettingsPage() {
         <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center text-xl">
-              <Languages className="ml-3 text-primary" />
+              <Languages className="ms-3 text-primary" />
               اللغة والمظهر
             </CardTitle>
             <CardDescription>تخصيص لغة التطبيق والمظهر العام.</CardDescription>
@@ -73,7 +73,7 @@ export default function SettingsPage() {
           <CardContent className="space-y-4">
              <div className="flex items-center justify-between p-3 rounded-md hover:bg-muted/50">
               <Label htmlFor="language-select" className="font-normal">لغة التطبيق</Label>
-              <Button variant="outline" size="sm">العربية <ChevronLeft size={16} className="mr-1" /></Button>
+              <Button variant="outline" size="sm">العربية <ChevronLeft size={16} className="me-1" /></Button> {/* For RTL, "dropdown indicator" or "more options" can be ChevronLeft */}
             </div>
             <div className="flex items-center justify-between p-3 rounded-md hover:bg-muted/50">
               <Label htmlFor="dark-mode-toggle" className="font-normal">الوضع الداكن</Label>

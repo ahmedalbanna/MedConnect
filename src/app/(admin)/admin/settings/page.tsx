@@ -17,7 +17,7 @@ export default function AdminSettingsPage() {
 
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center text-xl"><Mail className="ml-3 text-primary"/> إعدادات البريد الإلكتروني</CardTitle>
+          <CardTitle className="flex items-center text-xl"><Mail className="ms-3 text-primary"/> إعدادات البريد الإلكتروني</CardTitle>
           <CardDescription>تكوين إعدادات خادم SMTP لإرسال رسائل البريد الإلكتروني من النظام.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -47,7 +47,7 @@ export default function AdminSettingsPage() {
 
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="flex items-center text-xl"><Shield className="ml-3 text-primary"/> إعدادات الأمان</CardTitle> {/* Changed ShieldLock to Shield */}
+          <CardTitle className="flex items-center text-xl"><Shield className="ms-3 text-primary"/> إعدادات الأمان</CardTitle> {/* Changed ShieldLock to Shield */}
           <CardDescription>إدارة سياسات الأمان والوصول.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

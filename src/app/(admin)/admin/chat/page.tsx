@@ -87,7 +87,7 @@ export default function AdminChatPage() {
       <header className="flex items-center p-3 border-b bg-card shadow-sm sticky top-0 z-10">
         {selectedUser ? (
           <>
-            <Avatar className="h-10 w-10 ml-3">
+            <Avatar className="h-10 w-10 ms-3">
               <AvatarImage src={selectedUser.avatarUrl} alt={selectedUser.name} data-ai-hint="profile person" />
               <AvatarFallback>{selectedUser.name.substring(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
@@ -100,7 +100,7 @@ export default function AdminChatPage() {
           <h2 className="text-lg font-semibold flex-grow">محادثات المسؤول</h2>
         )}
         <Button variant="outline" onClick={() => setOpenUserSearch(true)}>
-          <Search size={16} className="ml-2" /> {selectedUser ? 'تغيير المستخدم' : 'اختيار مستخدم'}
+          <Search size={16} className="ms-2" /> {selectedUser ? 'تغيير المستخدم' : 'اختيار مستخدم'}
         </Button>
       </header>
 
@@ -111,12 +111,12 @@ export default function AdminChatPage() {
           <CommandGroup heading="المستخدمون">
             {mockUsers.map(user => (
               <CommandItem key={user.id} onSelect={() => handleUserSelect(user)} value={`${user.name} ${user.email}`}>
-                <Avatar className="h-8 w-8 ml-3">
+                <Avatar className="h-8 w-8 ms-3">
                   <AvatarImage src={user.avatarUrl} alt={user.name} data-ai-hint="profile person" />
                   <AvatarFallback>{user.name.substring(0,1)}</AvatarFallback>
                 </Avatar>
                 <span>{user.name}</span>
-                <span className="text-xs text-muted-foreground mr-auto">{user.email}</span>
+                <span className="text-xs text-muted-foreground me-auto">{user.email}</span>
               </CommandItem>
             ))}
           </CommandGroup>
@@ -140,11 +140,11 @@ export default function AdminChatPage() {
               key={msg.id}
               className={cn(
                 "flex items-end max-w-[75%] md:max-w-[60%]",
-                msg.sender === 'admin' ? 'ml-auto flex-row-reverse' : 'mr-auto flex-row'
+                msg.sender === 'admin' ? 'me-auto flex-row-reverse' : 'ms-auto flex-row'
               )}
             >
               {msg.sender === 'user' && (
-                <Avatar className="h-8 w-8 ml-2 self-start shrink-0">
+                <Avatar className="h-8 w-8 ms-2 self-start shrink-0">
                   <AvatarImage src={msg.userAvatarUrl} alt="User" data-ai-hint="profile person" />
                   <AvatarFallback>{selectedUser?.name.substring(0,1)}</AvatarFallback>
                 </Avatar>
@@ -153,14 +153,14 @@ export default function AdminChatPage() {
                 className={cn(
                   "p-3 rounded-xl shadow",
                   msg.sender === 'admin'
-                    ? 'bg-primary text-primary-foreground rounded-br-none'
-                    : 'bg-card text-card-foreground rounded-bl-none border'
+                    ? 'bg-primary text-primary-foreground rounded-be-none'
+                    : 'bg-card text-card-foreground rounded-bs-none border'
                 )}
               >
                 <p className="text-sm">{msg.content}</p>
                 <p className={cn(
                     "text-xs mt-1",
-                    msg.sender === 'admin' ? 'text-primary-foreground/70 text-left' : 'text-muted-foreground text-right'
+                    msg.sender === 'admin' ? 'text-primary-foreground/70 text-start' : 'text-muted-foreground text-end'
                   )}
                 >
                   {new Date(msg.timestamp).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}

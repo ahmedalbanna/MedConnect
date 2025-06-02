@@ -3,7 +3,7 @@
 
 import PostCard from '@/components/medconnect/post-card';
 import { Button } from '@/components/ui/button';
-import { PlusCircle, Edit, Trash2 } from 'lucide-react';
+import { PlusCircle, Edit, Trash2, FileText } from 'lucide-react'; // Added FileText
 import Link from 'next/link';
 
 // Mock data for posts created by the current medical rep
@@ -47,7 +47,7 @@ export default function MyPostsPage() {
         </div>
         <Button asChild className="mt-4 sm:mt-0 bg-accent hover:bg-accent/90 text-accent-foreground">
           <Link href="/create-post">
-            <PlusCircle className="ml-2 h-5 w-5" />
+            <PlusCircle className="ms-2 h-5 w-5" />
             إنشاء منشور جديد
           </Link>
         </Button>
@@ -58,7 +58,7 @@ export default function MyPostsPage() {
           {posts.map((post) => (
             <div key={post.id} className="relative group">
               <PostCard post={post} />
-              <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-2 space-x-reverse bg-black/50 p-1.5 rounded-md">
+              <div className="absolute top-2 start-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-2 space-x-reverse bg-black/50 p-1.5 rounded-md">
                 <Button variant="outline" size="icon" className="h-7 w-7 border-primary text-primary hover:bg-primary/10">
                   <Edit size={14} />
                 </Button>
@@ -81,6 +81,3 @@ export default function MyPostsPage() {
     </div>
   );
 }
-
-
-    

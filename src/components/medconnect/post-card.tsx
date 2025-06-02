@@ -27,7 +27,7 @@ export default function PostCard({ post }: PostCardProps) {
           <AvatarImage src={post.repAvatarUrl || "https://placehold.co/40x40.png"} alt={post.repName} data-ai-hint="medical representative" />
           <AvatarFallback>{post.repName.substring(0, 2).toUpperCase()}</AvatarFallback>
         </Avatar>
-        <div className="text-right">
+        <div className="text-end">
           <p className="font-semibold text-sm">{post.repName}</p>
           <p className="text-xs text-muted-foreground">{post.companyName} &middot; {new Date(post.createdAt).toLocaleDateString('ar-EG', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
         </div>
@@ -37,8 +37,9 @@ export default function PostCard({ post }: PostCardProps) {
           <Image 
             src={post.imageUrl} 
             alt={post.title} 
-            layout="fill" 
-            objectFit="cover" 
+            fill={true}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            style={{objectFit: "cover"}}
             data-ai-hint="product medical" 
           />
         </div>
@@ -52,14 +53,14 @@ export default function PostCard({ post }: PostCardProps) {
       <CardFooter className="flex justify-between items-center p-4 border-t">
         <div className="flex space-x-4 space-x-reverse text-muted-foreground">
           <Button variant="ghost" size="sm" className="flex items-center">
-            <ThumbsUp className="ml-1.5 h-4 w-4" /> {post.likesCount}
+            <ThumbsUp className="ms-1.5 h-4 w-4" /> {post.likesCount}
           </Button>
           <Button variant="ghost" size="sm" className="flex items-center">
-            <MessageCircle className="ml-1.5 h-4 w-4" /> {post.commentsCount}
+            <MessageCircle className="ms-1.5 h-4 w-4" /> {post.commentsCount}
           </Button>
         </div>
         <Button variant="ghost" size="sm">
-          <Share2 className="ml-1.5 h-4 w-4" /> مشاركة
+          <Share2 className="ms-1.5 h-4 w-4" /> مشاركة
         </Button>
       </CardFooter>
     </Card>

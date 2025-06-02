@@ -22,7 +22,7 @@ const mockPharmacyUser = {
   pharmacyName: 'صيدلية الأمل', 
   address: 'شارع الملك فهد، الرياض',
   licenseNumber: 'PH-12345',
-  isApproved: true, // Not directly used for pharmacy in this UI but good for consistency
+  isApproved: true, 
 };
 
 const mockMedicalRepUser = {
@@ -69,15 +69,15 @@ export default function ProfilePage() {
             <CardDescription className="text-md flex items-center justify-center space-x-1 space-x-reverse">
               <span>{user.role === 'pharmacy' ? 'صيدلية' : 'مندوب طبي'}</span>
               {user.role === 'medical_rep' && (
-                <Badge variant={user.isApproved ? "default" : "destructive"} className="mr-2 text-xs bg-green-500/80 text-white">
-                  {user.isApproved ? <CheckCircle className="ml-1 h-3 w-3" /> : <Clock className="ml-1 h-3 w-3" />}
+                <Badge variant={user.isApproved ? "default" : "destructive"} className="me-2 text-xs bg-green-500/80 text-white">
+                  {user.isApproved ? <CheckCircle className="ms-1 h-3 w-3" /> : <Clock className="ms-1 h-3 w-3" />}
                   {user.isApproved ? 'معتمد' : 'في انتظار الموافقة'}
                 </Badge>
               )}
             </CardDescription>
           </div>
           <Button variant="outline" size="sm">
-            <Edit3 className="ml-2 h-4 w-4" /> تعديل الصورة
+            <Edit3 className="ms-2 h-4 w-4" /> تعديل الصورة
           </Button>
         </CardHeader>
 
@@ -86,19 +86,19 @@ export default function ProfilePage() {
             <h3 className="text-lg font-semibold mb-3 text-primary">المعلومات الأساسية</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
               <div className="flex items-center">
-                <Mail size={16} className="ml-3 text-muted-foreground" />
+                <Mail size={16} className="ms-3 text-muted-foreground" />
                 <strong>البريد الإلكتروني:</strong>
-                <span className="mr-2 text-muted-foreground">{user.email}</span>
+                <span className="me-2 text-muted-foreground">{user.email}</span>
               </div>
               <div className="flex items-center">
-                <Phone size={16} className="ml-3 text-muted-foreground" />
+                <Phone size={16} className="ms-3 text-muted-foreground" />
                 <strong>رقم الهاتف:</strong>
-                <span className="mr-2 text-muted-foreground">{user.phoneNumber || 'غير متوفر'}</span>
+                <span className="me-2 text-muted-foreground">{user.phoneNumber || 'غير متوفر'}</span>
               </div>
               <div className="flex items-center">
-                <MapPin size={16} className="ml-3 text-muted-foreground" />
+                <MapPin size={16} className="ms-3 text-muted-foreground" />
                 <strong>المنطقة:</strong>
-                <span className="mr-2 text-muted-foreground">{user.region || 'غير محدد'}</span>
+                <span className="me-2 text-muted-foreground">{user.region || 'غير محدد'}</span>
               </div>
             </div>
           </div>
@@ -110,19 +110,19 @@ export default function ProfilePage() {
               <h3 className="text-lg font-semibold mb-3 text-primary">معلومات الصيدلية</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
                 <div className="flex items-center">
-                  <Building size={16} className="ml-3 text-muted-foreground" />
+                  <Building size={16} className="ms-3 text-muted-foreground" />
                   <strong>اسم الصيدلية:</strong>
-                  <span className="mr-2 text-muted-foreground">{mockPharmacyUser.pharmacyName}</span>
+                  <span className="me-2 text-muted-foreground">{mockPharmacyUser.pharmacyName}</span>
                 </div>
                 <div className="flex items-center md:col-span-2">
-                  <MapPin size={16} className="ml-3 text-muted-foreground" />
+                  <MapPin size={16} className="ms-3 text-muted-foreground" />
                   <strong>العنوان:</strong>
-                  <span className="mr-2 text-muted-foreground">{mockPharmacyUser.address}</span>
+                  <span className="me-2 text-muted-foreground">{mockPharmacyUser.address}</span>
                 </div>
                 <div className="flex items-center">
-                  <Shield size={16} className="ml-3 text-muted-foreground" />
+                  <Shield size={16} className="ms-3 text-muted-foreground" />
                   <strong>رقم الترخيص:</strong>
-                  <span className="mr-2 text-muted-foreground">{mockPharmacyUser.licenseNumber}</span>
+                  <span className="me-2 text-muted-foreground">{mockPharmacyUser.licenseNumber}</span>
                 </div>
               </div>
             </div>
@@ -133,20 +133,20 @@ export default function ProfilePage() {
               <h3 className="text-lg font-semibold mb-3 text-primary">معلومات المندوب</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
                 <div className="flex items-center">
-                  <Briefcase size={16} className="ml-3 text-muted-foreground" />
+                  <Briefcase size={16} className="ms-3 text-muted-foreground" />
                   <strong>اسم الشركة:</strong>
-                  <span className="mr-2 text-muted-foreground">{mockMedicalRepUser.companyName}</span>
+                  <span className="me-2 text-muted-foreground">{mockMedicalRepUser.companyName}</span>
                 </div>
                 <div className="flex items-center">
-                  <UserCircle size={16} className="ml-3 text-muted-foreground" />
+                  <UserCircle size={16} className="ms-3 text-muted-foreground" />
                   <strong>التخصص:</strong>
-                  <span className="mr-2 text-muted-foreground">{mockMedicalRepUser.specialty}</span>
+                  <span className="me-2 text-muted-foreground">{mockMedicalRepUser.specialty}</span>
                 </div>
                  {mockMedicalRepUser.licenseNumber && (
                     <div className="flex items-center">
-                        <Shield size={16} className="ml-3 text-muted-foreground" />
+                        <Shield size={16} className="ms-3 text-muted-foreground" />
                         <strong>رقم الرخصة:</strong>
-                        <span className="mr-2 text-muted-foreground">{mockMedicalRepUser.licenseNumber}</span>
+                        <span className="me-2 text-muted-foreground">{mockMedicalRepUser.licenseNumber}</span>
                     </div>
                 )}
                 {mockMedicalRepUser.bio && (
@@ -163,18 +163,18 @@ export default function ProfilePage() {
 
           <div className="space-y-3 pt-2 flex flex-wrap gap-2">
              <Button variant="default" className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground">
-              <Edit3 className="ml-2 h-4 w-4" /> تعديل الملف الشخصي
+              <Edit3 className="ms-2 h-4 w-4" /> تعديل الملف الشخصي
             </Button>
             <Button variant="outline" className="w-full sm:w-auto">
               تغيير كلمة المرور
             </Button>
             <Button asChild variant="outline" className="w-full sm:w-auto">
                 <Link href="/settings">
-                    <Settings className="ml-2 h-4 w-4" /> إعدادات التطبيق
+                    <Settings className="ms-2 h-4 w-4" /> إعدادات التطبيق
                 </Link>
             </Button>
             <Button variant="destructive" onClick={handleLogout} className="w-full sm:w-auto">
-              <LogOut className="ml-2 h-4 w-4" /> تسجيل الخروج
+              <LogOut className="ms-2 h-4 w-4" /> تسجيل الخروج
             </Button>
           </div>
         </CardContent>

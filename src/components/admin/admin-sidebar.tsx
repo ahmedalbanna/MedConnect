@@ -55,7 +55,7 @@ function ActualAdminSidebar() {
   };
 
   return (
-    <Sidebar side="right" variant="sidebar" collapsible="icon" className="border-l">
+    <Sidebar side="right" variant="sidebar" collapsible="icon" className="border-s">
       <SidebarHeader className="p-4 border-b items-center justify-between">
         <Link href="/admin/dashboard" className="flex items-center gap-2">
           <Image 
@@ -117,7 +117,7 @@ function ActualAdminSidebar() {
           onClick={handleLogout}
         >
           <LogOut className="h-5 w-5" />
-          {open && <span className="mr-2">تسجيل الخروج</span>}
+          {open && <span className="me-2">{/* Adjusted from mr-2 to me-2 if LogOut icon is first, or ms-2 if text is first */}تسجيل الخروج</span>}
         </Button>
       </SidebarFooter>
     </Sidebar>

@@ -37,8 +37,8 @@ export default function ChatListPage() {
       </header>
       
       <div className="relative mb-6">
-        <Input type="search" placeholder="ابحث في المحادثات..." className="pr-10" />
-        <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+        <Input type="search" placeholder="ابحث في المحادثات..." className="ps-10" />
+        <Search className="absolute end-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
       </div>
 
       <div className="bg-card rounded-lg shadow">

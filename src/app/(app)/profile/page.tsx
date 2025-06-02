@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { Edit3, Shield, LogOut, MapPin, Phone, Mail, Building, Briefcase, CheckCircle, Clock, UserCircle } from 'lucide-react';
+import { Edit3, Shield, LogOut, MapPin, Phone, Mail, Building, Briefcase, CheckCircle, Clock, UserCircle, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRole, UserRole } from '@/contexts/role-context';
